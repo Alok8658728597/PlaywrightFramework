@@ -1,5 +1,7 @@
 import {test,expect} from '@playwright/test';
 
+//test.describe.configure({ mode: 'parallel' });//To run all tests in the file parallely we use this tricks, default is sequnetially
+//test.describe.configure({ mode: 'serial' });//To run all tests in the file sequnetially if one depends on other it will skips other file if one is failed
 test('Dropdown and Radio Button Handling including Checkmark',async({page})=>{
    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
    await page.locator('select.form-control').selectOption('consult');
@@ -14,7 +16,7 @@ test('Dropdown and Radio Button Handling including Checkmark',async({page})=>{
     expect(await page.locator('#terms').nth(1).isChecked()).toBeFalsy();
 //Perform blinking text on the page *IF the link will have class attribute with value as blinkingText then only it will work otherwise it will give error
 });
-test.only('Blinking Text handling',async({page})=>{
+test('Blinking Text handling',async({page})=>{
    await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
    const documentlink=page.locator('a[href*="documents-request"]');
    await expect(documentlink).toHaveAttribute('class','blinkingText');
