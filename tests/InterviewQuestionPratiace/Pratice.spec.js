@@ -9,6 +9,7 @@ test('Interview questins pratice',async({browser})=>{
    page.locator(".cards").filter({hasText:'Alok'}).getByRole('button',{name:'Edit'}).click();
    page.selectOptions('#dropdown',{Label:"Option1"}); //Seclect from dropdown using lable
    await expect(page.locator("#id")).toHaveText("1234"); //WebAssertions
+   await expect(page).toHaveTitle(/Playwright/);
    await expect.soft(page).toHaveURL('**/dashboard'); //Soft assertions
    await expect(page.locator("#id")).toHaveValue('5');
    await page.screenshot({path:'fullpage.png',fullPage:true});//fullpage screenshot
